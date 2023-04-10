@@ -7,8 +7,8 @@ email: document.querySelector('.feedback-form input'),
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.message.addEventListener('input', onMessageInput);
-refs.email.addEventListener('input', onEmailInput);
+refs.message.addEventListener('input', throttle(onMessageInput, 500));
+refs.email.addEventListener('input', throttle(onEmailInput, 500));
 
 // Устанавливаем поведение по умолчанию
 // Убираем сообщение из хранилища
@@ -24,7 +24,7 @@ localStorage.removeItem('email-text');
 // Записываем в локал сторадж
 // добавляем троттл
 function onEmailInput(evt){
-    const emailValue = evt.currentTarget.value;
+    const emailValue = evt.target.value;
     localStorage.setItem('email-text', emailValue);  
 };
 
@@ -32,7 +32,7 @@ function onEmailInput(evt){
 // Записываем в локал сторадж
 // добаваляем троттл
 function onMessageInput(evt){
-    const messageValue = evt.currentTarget.value;
+    const messageValue = evt.target.value;
     localStorage.setItem('message-text', messageValue); 
     
 };
