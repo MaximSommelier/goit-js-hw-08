@@ -10,6 +10,9 @@ refs.form.addEventListener('submit', onFormSubmit);
 refs.message.addEventListener('input', throttle(onMessageInput, 500));
 refs.email.addEventListener('input', throttle(onEmailInput, 500));
 
+messageOutput();
+emailOutput();
+
 // Устанавливаем поведение по умолчанию
 // Убираем сообщение из хранилища
 // Очищаем форму
