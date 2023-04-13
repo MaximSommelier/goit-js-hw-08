@@ -6,7 +6,6 @@ const { message, email } = formElements;
 form.addEventListener('submit', onFormSubmit);
 STORAGE_KEY = "feedback-form-state";
 
-
 onFormOutput();
 // Устанавливаем поведение по умолчанию
 // Убираем сообщение из хранилища
