@@ -1,12 +1,15 @@
 import throttle from "lodash.throttle";
 
 const form = document.querySelector('.feedback-form');
-const { message, email } = formElements;
+const email = document.querySelector('input[name="email"\]');
+const message = document.querySelector('input[name="message"\]');
 
+form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
-STORAGE_KEY = "feedback-form-state";
+const STORAGE_KEY = "feedback-form-state";
 
-onFormOutput();
+let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
 // Устанавливаем поведение по умолчанию
 // Убираем сообщение из хранилища
 // Очищаем форму
@@ -19,8 +22,8 @@ localStorage.removeItem(STORAGE_KEY);
 // Записываем в локал сторадж
 // добавляем троттл
 function onFormInput (evt) {
-    const formElements = {email: email.value, message: message.value};
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formElements));  
+    formData[evt.target.name] = evt.target.value;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));  
 };
 // Получаем значение из локал сторадж
 // Если там что то было обновляем ДОМ
