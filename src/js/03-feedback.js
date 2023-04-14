@@ -7,11 +7,12 @@ const message = document.querySelector('input[name=message]');
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
-onFormOutput();
+
 const STORAGE_KEY = "feedback-form-state";
 
 let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
+onFormOutput();
 // Устанавливаем поведение по умолчанию
 // Убираем сообщение из хранилища
 // Очищаем форму
@@ -42,7 +43,7 @@ function onFormOutput() {
         email.value = savedMessage.email;
      }
 };
-onFormOutput();
+
 
 
 
