@@ -1,11 +1,12 @@
 import throttle from "lodash.throttle";
 
 const form = document.querySelector('.feedback-form');
-const email = document.querySelector('input[name="email"\]');
-const message = document.querySelector('input[name="message"\]');
+const email = document.querySelector('input[name=email]');
+const message = document.querySelector('input[name=message]');
 
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
+
 const STORAGE_KEY = "feedback-form-state";
 
 let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
@@ -14,6 +15,9 @@ let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 // Убираем сообщение из хранилища
 // Очищаем форму
 function onFormSubmit(evt){
+    if (email.value.trim === "" || message.value.trim == ""){
+      return alert("Please fill all fields!");
+    };
 evt.preventDefault();
 evt.currentTarget.reset();
 localStorage.removeItem(STORAGE_KEY);
@@ -29,7 +33,7 @@ function onFormInput (evt) {
 // Если там что то было обновляем ДОМ
 function onFormOutput() {
     const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
+    
      if (savedMessage) {
         console.log(savedMessage);
         message.value = savedMessage.message;

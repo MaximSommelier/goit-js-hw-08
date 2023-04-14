@@ -9,6 +9,10 @@ import throttle from "lodash.throttle";
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data.seconds))};
 
     player.on('timeupdate', throttle(getLocalStorage,1000));
+    const storage = localStorage.getItem(STORAGE_KEY);
+    if (storage){
+        player.setCurrentTime(JSON.parse(storage));
+    }
 
     
 
