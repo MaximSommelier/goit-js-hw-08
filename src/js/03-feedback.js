@@ -45,8 +45,46 @@ function onFormLoad() {
 };
 
 // =================================================================================
+// import throttle from "lodash.throttle";
 
+// const form = document.querySelector('.feedback-form');
+// const email = document.querySelector('input[name=email]');
+// const message = document.querySelector('textarea[name=message]');
+// const STORAGE_KEY = "feedback-form-state";
 
+// form.addEventListener('input', throttle(event =>{ 
+// const formData = {
+//     email = email.value,
+//     message = message.value,
+// };
+// localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+// }, 500));
+
+// заполнение формы при перезагрузке
+// document.addEventListener('load', evt => {
+//     const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+//     if (savedData){
+//         email.value = savedData.email;
+//         message.value = savedData.message;
+//     }
+// });
+
+// обратка сабмита формы
+// form.addEventListener('submit', evt => {
+//     evt.preventDefault();
+
+// очищаем формы и локал сторадж
+    // email.value = '';
+    // message.value = '';
+    // localStorage.removeItem(STORAGE_KEY);
+
+// выведение данных в консоль
+//     const formData = {
+//         email = email.value,
+//         message = message.value,
+//     };
+//     console.log(formData);
+// });
 // =====================================================================================
 
 // import throttle from "lodash.throttle";
